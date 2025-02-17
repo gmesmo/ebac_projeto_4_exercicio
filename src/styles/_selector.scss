@@ -1,0 +1,112 @@
+@use "variaveis";
+
+.selector {
+  padding: 0 4.72vw;
+  color: variaveis.$corTexto;
+
+  @media (max-width: 768px) {
+    padding: 0 0 0 4.72vw;
+  }
+
+  &__wrapper {
+    position: relative;
+    min-height: 75vh;
+  }
+
+  .selector__container {
+    margin-bottom: 56px;
+    .selector__options {
+      display: flex;
+      gap: 26px;
+
+      li {
+        padding: 5px 0;
+        height: 50px;
+        cursor: pointer;
+        border-bottom: 2px solid variaveis.$corDeFundo;
+      }
+
+      :has(.option--is-active) {
+        border-bottom: 2px solid variaveis.$corTexto;
+      }
+
+      .option {
+        border: none;
+        background: none;
+        color: variaveis.$corTexto;
+        cursor: pointer;
+        font-size: 18px;
+
+        width: 100%;
+        height: 100%;
+
+        font-weight: 500;
+        line-height: 30px;
+      }
+    }
+  }
+
+  &__selected_tab {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+
+    &--is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    h3 {
+      margin-bottom: 26px;
+    }
+
+    .related__container {
+      padding-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+
+      @media (max-width: 768px) {
+        padding: 2vw;
+        gap: 15px;
+        overflow-x: scroll;
+      }
+
+      img {
+        position: relative;
+        width: 270px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s all ease-in-out;
+
+        &:hover {
+          transform: scale(1.1);
+          transform-origin: center;
+          z-index: 2;
+        }
+      }
+    }
+
+    .about__container {
+      h3 {
+        font-size: 20px;
+      }
+
+      div {
+        h4 {
+          font-size: 32px;
+          margin-top: 36px;
+        }
+
+        p {
+          font-size: 20px;
+          margin-top: 16px;
+          color: variaveis.$corAdditional;
+        }
+      }
+    }
+  }
+}

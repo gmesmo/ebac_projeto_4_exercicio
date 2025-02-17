@@ -1,0 +1,317 @@
+@use "variaveis";
+
+@mixin marginBottom($margin-bottom: 16px) {
+  margin-bottom: $margin-bottom;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  height: 90vh;
+  width: 100%;
+  padding: 0 4.72vw;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    width: 90dvw;
+  }
+
+  &__image_container {
+    width: 100%;
+    height: 80%;
+    background: url(../../dist/images/hero/interstellar.jpg);
+    background-size: cover;
+    position: absolute;
+    left: 0;
+
+    @media (max-width: 768px) {
+      height: 30%;
+      width: 100vw;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        variaveis.$corDeFundo 90%
+      );
+      width: 100%;
+      height: 4em;
+
+      @media (max-width: 768px) {
+        height: 5%;
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    width: 50%;
+    min-width: 760px;
+    margin-bottom: 56px;
+
+    @media (max-width: 768px) {
+      min-width: 100%;
+    }
+
+    .movie_title,
+    .movie_info {
+      @include marginBottom(56px);
+    }
+
+    .movie_title {
+      img {
+        @include marginBottom;
+      }
+
+      &__name {
+        color: variaveis.$corTexto;
+        line-height: 48px;
+        @include marginBottom;
+
+        @media (max-width: 768px) {
+          font-size: 28px;
+          line-height: 32px;
+          @include marginBottom(8px);
+        }
+      }
+
+      &__award {
+        font-size: 14px;
+        color: variaveis.$corAward;
+
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .movie_info {
+      &__sinopsis {
+        display: inline-block;
+        color: variaveis.$corTexto;
+        letter-spacing: 0.96px;
+        font-weight: 500;
+        font-size: 18px;
+        @include marginBottom;
+
+        @media (max-width: 768px) {
+          max-width: 90vw;
+          font-size: 12px;
+        }
+      }
+
+      &__additional {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: variaveis.$corAdditional;
+        user-select: none;
+        @include marginBottom;
+
+        @media (max-width: 768px) {
+          font-size: 10px;
+        }
+
+        span {
+          display: flex;
+          align-items: center;
+          font-weight: 700;
+          height: 100%;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .xray,
+        .subtitles {
+          background-color: variaveis.$corFundoAdditional;
+          color: variaveis.$corTexto;
+          padding: 3px 5px;
+          border-radius: 3px;
+
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+
+        .audio_description {
+          background-color: variaveis.$corFundoAdditional;
+          color: variaveis.$corTexto;
+          padding: 3px;
+          border-radius: 3px;
+
+          svg {
+            width: 32px;
+            height: 14px;
+          }
+        }
+      }
+
+      &__genres {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: variaveis.$corTexto;
+
+        @media (max-width: 768px) {
+          font-size: 10px;
+        }
+
+        .divider {
+          width: 5px;
+          height: 5px;
+          background-color: variaveis.$corTexto;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      @include marginBottom;
+
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        padding: 8px 21px;
+        height: 62px;
+        width: auto;
+
+        position: relative;
+
+        @media (max-width: 768px) {
+          min-width: 85vw;
+        }
+
+        &__text {
+          margin-left: 14px;
+        }
+
+        span svg {
+          height: 33px;
+          width: 33px;
+        }
+
+        span:has(svg) {
+          height: 33px;
+        }
+
+        &__rounded {
+          width: 62px;
+          height: 62px;
+
+          @media (max-width: 768px) {
+            min-width: unset;
+          }
+        }
+
+        &--assistir-trailer:before {
+          content: "Assistir ao trailer";
+        }
+
+        &--lista:before {
+          content: "Lista";
+        }
+
+        &--curtir,
+        &--sem-interesse {
+          span svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 60px;
+            width: 60px;
+            fill: variaveis.$corTexto;
+
+            &:hover {
+              fill: variaveis.$corDeFundo;
+            }
+          }
+
+          &:before {
+            content: "Curtir";
+          }
+        }
+
+        &--sem-interesse:before {
+          content: "Não tenho interesse";
+        }
+
+        &--baixar:before {
+          content: "Baixar";
+        }
+
+        &--compartilhar:before {
+          content: "Compartilhar";
+        }
+
+        &--assistir-trailer,
+        &--lista,
+        &--curtir,
+        &--sem-interesse,
+        &--baixar,
+        &--compartilhar {
+          &:before {
+            display: flex;
+            white-space: nowrap;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 10px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+
+            background-color: variaveis.$corTexto;
+            color: variaveis.$corDeFundo;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.15s all ease-in-out;
+          }
+
+          &:hover:before {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    &__prime_included {
+      display: flex;
+      align-items: center;
+      color: variaveis.$corTexto;
+      font-weight: 400;
+
+      svg {
+        height: 20px;
+        width: 20px;
+        margin-right: 10px;
+        color: variaveis.$corPrime;
+      }
+    }
+  }
+}

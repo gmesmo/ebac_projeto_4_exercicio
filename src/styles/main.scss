@@ -1,0 +1,90 @@
+@use "variaveis";
+@use "header";
+@use "hero";
+@use "selector";
+@use "footer";
+
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("../../assets/Amazon\ Ember.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("../../assets/Amazon\ Ember\ Medium.ttf");
+  font-weight: 500;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-family: Amazon Ember;
+  text-decoration: none;
+}
+
+@mixin text($font-size: 14px) {
+  font-size: $font-size;
+}
+
+@mixin title($font-size: 36px) {
+  font-size: $font-size;
+}
+
+body {
+  background-color: variaveis.$corDeFundo;
+}
+
+h1 {
+  @include title;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+
+  padding: 0 12px;
+
+  border-radius: 8px;
+
+  @include text;
+  font-weight: 500;
+  cursor: pointer;
+
+  background-color: variaveis.$corDeFundoBotao;
+  color: variaveis.$corTexto;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &__rounded {
+    padding: 0px;
+    width: 40px;
+    border-radius: 50%;
+  }
+
+  &--has-icon {
+    gap: 8px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background-color: variaveis.$corTexto;
+    color: variaveis.$corDeFundo;
+  }
+}
+
+span {
+  letter-spacing: 0.49px;
+}

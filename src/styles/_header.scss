@@ -1,0 +1,89 @@
+@use "variaveis";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 26px;
+  background-color: variaveis.$corDeFundo;
+  color: variaveis.$corTexto;
+
+  @media (max-width: 768px) {
+    overflow-x: scroll;
+    width: calc(100vw - 52px);
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 0 18px;
+
+    &__menus {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      img {
+        width: 80px;
+        margin-right: 36px;
+      }
+
+      .menus__list {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: 4px;
+
+        li {
+          display: flex;
+          align-items: center;
+          height: 100%;
+
+          .button {
+            background-color: transparent;
+
+            &__rounded {
+              &__profile-pic {
+                display: block;
+                width: 30px;
+                height: 30px;
+                background-image: url("https://place-hold.it/30");
+                background-size: cover;
+                border-radius: 50%;
+              }
+            }
+
+            &:hover {
+              background-color: variaveis.$corTexto;
+            }
+          }
+
+          .button:has(img):hover {
+            background-color: variaveis.$corPrime;
+          }
+
+          img {
+            height: 25px;
+            width: 42px;
+
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+
+    &__divider {
+      height: 24px;
+      width: 2px;
+      margin: 0 16px;
+
+      background-color: variaveis.$corTexto;
+      opacity: 0.4;
+    }
+  }
+}
